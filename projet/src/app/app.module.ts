@@ -7,9 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-
+import {MaterialModule} from './material.module'
 
 @NgModule({
   declarations: [
@@ -20,8 +20,11 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ErrorPageComponent 
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule, 
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
