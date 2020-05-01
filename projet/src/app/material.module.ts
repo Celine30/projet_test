@@ -7,6 +7,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 
+import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 @NgModule({
@@ -19,8 +22,9 @@ import {MatListModule} from '@angular/material/list';
         MatSidenavModule,
         MatListModule,
 
-      
-    
+        MatTableModule,
+        MatCheckboxModule,
+
 
     ]
 })
