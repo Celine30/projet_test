@@ -7,16 +7,21 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 
+
+
 @NgModule({
     exports: [
         MatSliderModule,
         MatButtonModule,
         MatIconModule,
         MatSlideToggleModule,
-
         MatToolbarModule,
         MatSidenavModule,
-        MatListModule
+        MatListModule,
+
+      
+    
+
     ]
 })
 
