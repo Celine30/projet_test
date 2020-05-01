@@ -1,0 +1,25 @@
+<mat-sidenav-container>
+
+    <mat-sidenav mode="side" [(opened)]= "opened">
+        <mat-nav-list>
+            <a mat-list-item routerLink="home"> <mat-icon>home</mat-icon> Retour à l'accueil</a>
+            <a mat-list-item routerLink="episode"> <mat-icon>theaters</mat-icon> Episodes</a>
+            <a mat-list-item routerLink="actor"><mat-icon>tag_faces</mat-icon> Acteurs</a>
+         </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <mat-toolbar color="primary" class="navbar_material">
+            <div>C'est pas Sorcier</div>
+            <div>
+                <span class="link_menu" (click)="opened=!opened">Menu</span>
+                <em>Used Angular & Material Design</em>
+            </div>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
