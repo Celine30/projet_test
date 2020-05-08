@@ -60,21 +60,17 @@ export class ActorComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  onsave(){
-    this.actorservice.saveActorsToserver()
-  }
-
-  onfetch(){
-    this.actorservice.getActorsToServer()
-  }
-
   ngOnInit(): void {
+    this.actorservice.getActorsToServer()
+    this.actorservice.emitUserSubject()
+    
     this.actorSubscription = this.actorservice.userSubject.subscribe(
       (response) => {
         this.dataSource.data = response;
       }
-    );
-    this.actorservice.emitUserSubject()
+    ); 
+
+    
   }
 
 
