@@ -4,6 +4,9 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 
 
+import{ EpisodeService} from '../services/episode.service'
+import { Subscription } from 'rxjs';
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -12,15 +15,6 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Quels Chantiers', title: "La tour Eiffel"},
-  {position: 2, name: 'Quels Chantiers', title: "La Grande Arche de la Défence"},
-  {position: 3, name: 'Quels Chantiers', title: "Le viaduc de Millau"},
-  {position: 4, name: 'Quels Chantiers', title: "Le tunnel sous la manche"},
-  {position: 5, name: 'La Conquete du ciel', title: "Le Vol à voile"},
-  {position: 6, name: 'La Conquete du ciel', title: "Le dirigeables"},
-  {position: 7, name: 'La Conquete du ciel', title: "Les avions de chasse"},
-  {position: 8, name: 'La Conquete du ciel', title: "Les hélicoptères"},
-
 ];
 
 @Component({
@@ -31,6 +25,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class EpisodeComponent implements OnInit {
 
+  episodeSubscription : Subscription;
+
+  constructor(private episodeservice: EpisodeService) { }
 
   displayedColumns: string[] = ['select', 'position', 'name', 'title'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
@@ -58,12 +55,22 @@ export class EpisodeComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
+  onsaveEpisode(){
+    this.episodeservice.saveEpisodesToserver()
+  }
 
+  onfetchEpisode(){
+    this.episodeservice.getEpisodesToServer()
+  }
 
-
-  constructor() { }
 
   ngOnInit(): void {
+    this.episodeSubscription = this.episodeservice.episodesSubject.subscribe(
+      (response) => {
+        this.dataSource.data = response;
+      }
+    );
+    this.episodeservice.emitEpisodesSubject()
   }
 
 }

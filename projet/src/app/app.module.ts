@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 
 import { ActorService } from './services/actor.service';
+import { EpisodeService } from './services/episode.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ActorService } from './services/actor.service';
   ],
   providers: [
     ActorService,
+    EpisodeService 
   ],
   bootstrap: [AppComponent]
 })
