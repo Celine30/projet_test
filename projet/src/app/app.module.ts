@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule} from '@angular/forms'
 
@@ -8,11 +9,14 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {MaterialModule} from './material.module';
 import { ActorComponent } from './actor/actor.component';
 import { EpisodeComponent } from './episode/episode.component'
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from './material.module';
+
+import { ActorService } from './services/actor.service';
+import { EpisodeService } from './services/episode.service';
 
 @NgModule({
   declarations: [
@@ -28,10 +32,14 @@ import { EpisodeComponent } from './episode/episode.component'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
-   
+    FormsModule,
+    HttpClientModule
+  
   ],
-  providers: [],
+  providers: [
+    ActorService,
+    EpisodeService 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
